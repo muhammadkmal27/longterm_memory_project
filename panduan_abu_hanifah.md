@@ -13,10 +13,11 @@ Memori Abu Hanifah menggunakan pendekatan **Satu Sumber Kebenaran (Single Source
 ```
 abu_hanifah/
 ├── master-memory.md               # Pusat kawalan & indeks memori utama
+├── Abu_Hanifah_Safeguard/         # Alat pengimbas keselamatan (Rust Pentest Tool)
 ├── identity/
 │   └── identity-core.md           # Persona & gaya kod Abu Hanifah (Security-First)
 ├── relationship/
-│   └── user-preferences.md        # 32 Peraturan Keselamatan Global & bahasa
+│   └── user-preferences.md        # 33 Peraturan Keselamatan Global & bahasa
 ├── session/
 │   ├── current-session.md         # RAM memori sementara (padam setiap sesi baru)
 │   └── post-mortems.md            # Log pengajaran kegagalan (Post-Mortem)
@@ -284,11 +285,10 @@ Fasa ini adalah tapak asas (_foundation_) setiap projek baru. Abu Hanifah akan m
 4.  **Skema Storan & Database:** Jadual struktur kolum, jenis data, dan hubungan (foreign key).
 5.  **Carta Alir Mermaid:** Visualisasi kitaran logik teras (_core loop_) bagi fitur utama.
 6.  **Integrasi API:** Jadual endpoint, method (GET/POST), payload, authentication, dan peranan.
-7.  **Protokol Keselamatan:** Pematuhan terhadap 32 Peraturan Keselamatan Global.
+7.  **Protokol Keselamatan:** Pematuhan terhadap 33 Peraturan Keselamatan Global.
 8.  **Struktur Folder Projek:** Pohon direktori projek modular.
-9.  **Bahasa Komunikasi:** Pilihan bahasa (BM untuk penerangan/perancangan, EN untuk kod/teknikal).
-10. **UI/UX & Garis Panduan Estetika:** Keperluan reka bentuk premium, mod gelap, dan animasi mikro.
-11. **Roadmap MVP:** Pelan tindakan pembangunan yang dibahagikan kepada fasa-fasa.
+9.  **UI/UX & Garis Panduan Estetika:** Keperluan reka bentuk premium, mod gelap, dan animasi mikro.
+10. **Roadmap MVP:** Pelan tindakan pembangunan yang dibahagikan kepada fasa-fasa.
 
 > [!IMPORTANT]
 > Fail `prompt_planning.md` ini bertindak sebagai _Source of Truth_ utama. Sebelum memulakan fasa-fasa berikutnya, pastikan struktur ini lengkap dan disetujui sepenuhnya oleh Tuan.
@@ -317,7 +317,7 @@ Setiap kali unit test dijalankan, fail **`features.md`** mestilah dikemas kini s
 
 ### 🛡️ Fasa 5: Imbasan Keselamatan (Security Scan)
 
-Menjalankan audit keselamatan menyeluruh terhadap kod projek bagi mematuhi 32 Peraturan Keselamatan Global (_RULE[user_global]_). Sebarang kelemahan seperti SQL Injection, XSS, kebocoran token, atau isu OLAC (Object-Level Access Control) dibetulkan serta-merta, dan laporan audit disimpan dalam `security_audit.md`.
+Menjalankan audit keselamatan menyeluruh terhadap kod projek bagi mematuhi 33 Peraturan Keselamatan Global (_RULE[user_global]_). Sebarang kelemahan seperti SQL Injection, XSS, kebocoran token, atau isu OLAC (Object-Level Access Control) dibetulkan serta-merta, dan laporan audit disimpan dalam `security_audit.md`.
 
 ### ⚙️ Fasa 6: Konfigurasi Produksi & Nginx
 
