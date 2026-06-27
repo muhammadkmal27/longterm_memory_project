@@ -271,7 +271,7 @@ Sistem terbina dalam untuk menghasilkan jadual anggaran kos projek berdasarkan t
 
 ---
 
-## 4. 7 Fasa Pembangunan Sistem Abu Hanifah
+## 4. 8 Fasa Pembangunan Sistem Abu Hanifah
 
 Sistem pembangunan berturutan ini memastikan kualiti kod, seni bina yang mantap, dan keselamatan yang tinggi dapat dicapai dalam setiap projek:
 
@@ -326,3 +326,7 @@ Penyediaan fail `docker-compose.prod.yml` untuk tujuan deployment serta konfigur
 ### ⚡ Fasa 7: Ujian Bebanan (Load Testing)
 
 Membina fail pengujian k6 untuk menguji ketahanan dan prestasi sistem di bawah bebanan tinggi. Sebelum dijalankan, persekitaran pembangunan (_development server_) dimatikan dan aplikasi dijalankan sepenuhnya di dalam bekas (_container_) Docker produksi terlebih dahulu. Fail ralat binaan Docker wajib dibetulkan sehingga berjaya sebelum pengujian bebanan boleh diteruskan.
+
+### 🤖 Fasa 8: Ujian Automasi E2E (Playwright)
+
+Memasang dan mengkonfigurasi kerangka kerja Playwright di dalam projek frontend (seperti Next.js) menggunakan TypeScript. Fasa ini melibatkan pembinaan skrip ujian E2E yang menyeluruh untuk menyimulasikan tingkah laku pengguna sebenar, menguji aliran kritikal aplikasi, dan memastikan persekitaran web selamat daripada regresi (regression). Ia mesti dilaksanakan secara berterusan sehingga semua ujian disahkan berfungsi dengan baik.

@@ -38,7 +38,7 @@ Komunikasi
 
 ## Logik Pelaksanaan Berfasa
 
-Setiap kali projek baru dimulakan atau keperluan projek dibincangkan, anda wajib mengikuti urutan 7 fasa ini tanpa gagal:
+Setiap kali projek baru dimulakan atau keperluan projek dibincangkan, anda wajib mengikuti urutan 8 fasa ini tanpa gagal:
 
 - **Fasa 1 (Perancangan Prompt Utama - Prompt Planning)**: Bina fail `prompt_planning.md` di direktori utama projek. Struktur dokumen ini wajib mengikut piawaian yang tersusun rapi: Visi & Misi, Tech Stack, Peta Laman & Aliran Halaman (Sitemap), Skema Simpanan/Database, System Architecture (Core Loop), Integrasi API, Protokol Keselamatan (32 Global Rules), Struktur Folder Projek (Modular), UI/UX Guidelines, dan Roadmap MVP. Fail ini adalah *Source of Truth* utama sepanjang hayat projek.
 - **Fasa 2 (Project Mapping & Perancangan Ujian)**: Ekstrak setiap baris "Halaman" dan "Feature & Logik Utama" daripada gambar atau spesifikasi yang diberikan. Tukarkan setiap satu ciri tersebut menjadi tugasan yang unik dan bernombor. **UNTUK SETIAP TUGASAN CIRI BACKEND & FRONTEND, WAJIB TENTUKAN SKOP UNIT/FEATURE TEST YANG PERLU DIBINA. Rangka kerja pengujian (testing check) ini mesti disenaraikan secara jelas di dalam roadmap.md sebagai dwi-semakan (double-check), DAN bina/inisiatif fail `features.md` di direktori utama sebagai daftar induk kesemua fitur yang akan diuji berserta status semakan kotak centang (checkbox).**
@@ -48,6 +48,7 @@ Setiap kali projek baru dimulakan atau keperluan projek dibincangkan, anda wajib
 - **Fasa 5 (Imbasan Keselamatan - Security Scan)**: Menjalankan imbasan (scanning) secara menyeluruh terhadap semua fail kod dan fitur projek bagi memastikan pematuhan tegar terhadap 32 Peraturan Keselamatan Global (*RULE[user_global]*). Setiap kelemahan dikesan wajib dibetulkan serta-merta, dan laporan audit dikemas kini di dalam `security_audit.md` dengan menanda (`[x]`) pada senarai ciri yang telah disahkan selamat sepenuhnya.
 - **Fasa 6 (Konfigurasi Produksi & Nginx)**: Bina fail `docker-compose.prod.yml` untuk deployment dan konfigurasikan pelayan Nginx (termasuk reverse proxy, buffer tuning, rate limiting) bagi memudahkan pemasangan di server serta simulasi persekitaran produksi sebenar.
 - **Fasa 7 (Ujian Bebanan - Load Testing)**: Bina fail dan skrip *load testing* (k6 scripts). Apabila fasa ini dijalankan, AI mestilah mematikan persekitaran pembangunan (*development environment* sedia ada seperti `npm run dev` atau pelayan tempatan) terlebih dahulu, dan melancarkan semula aplikasi sepenuhnya menggunakan `docker-compose.prod.yml` di Docker Desktop sebelum menjalankan ujian bebanan (*load testing*). **DILARANG SAMA SEKALI menggunakan fallback seperti `npm run dev` atau `php artisan serve` secara tempatan (local host) jika persekitaran Docker gagal dibina. Jika terdapat ralat semasa build Docker, AI wajib membaiki ralat Docker tersebut sehingga berjaya sebelum memulakan ujian bebanan.**
+- **Fasa 8 (Ujian Automasi E2E - Playwright)**: Apabila fasa ini diarahkan, pasang dan konfigurasikan kerangka kerja Playwright di dalam projek frontend (contohnya Next.js) menggunakan TypeScript. Bina skrip ujian E2E yang menyimulasikan aliran pengguna sebenar secara automatik. Laksanakan ujian secara menyeluruh sehingga siap dan pastikan ia berfungsi tanpa sebarang ralat (regression test).
 
 ---
 
