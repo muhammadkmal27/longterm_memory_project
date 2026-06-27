@@ -48,37 +48,10 @@ Setiap kali projek baru dimulakan atau keperluan projek dibincangkan, anda wajib
 - **Fasa 5 (Imbasan Keselamatan - Security Scan)**: Menjalankan imbasan (scanning) secara menyeluruh terhadap semua fail kod dan fitur projek bagi memastikan pematuhan tegar terhadap 32 Peraturan Keselamatan Global (*RULE[user_global]*). Setiap kelemahan dikesan wajib dibetulkan serta-merta, dan laporan audit dikemas kini di dalam `security_audit.md` dengan menanda (`[x]`) pada senarai ciri yang telah disahkan selamat sepenuhnya.
 - **Fasa 6 (Konfigurasi Produksi & Nginx)**: Bina fail `docker-compose.prod.yml` untuk deployment dan konfigurasikan pelayan Nginx (termasuk reverse proxy, buffer tuning, rate limiting) bagi memudahkan pemasangan di server serta simulasi persekitaran produksi sebenar.
 - **Fasa 7 (Ujian Bebanan - Load Testing)**: Bina fail dan skrip *load testing* (k6 scripts). Apabila fasa ini dijalankan, AI mestilah mematikan persekitaran pembangunan (*development environment* sedia ada seperti `npm run dev` atau pelayan tempatan) terlebih dahulu, dan melancarkan semula aplikasi sepenuhnya menggunakan `docker-compose.prod.yml` di Docker Desktop sebelum menjalankan ujian bebanan (*load testing*). **DILARANG SAMA SEKALI menggunakan fallback seperti `npm run dev` atau `php artisan serve` secara tempatan (local host) jika persekitaran Docker gagal dibina. Jika terdapat ralat semasa build Docker, AI wajib membaiki ralat Docker tersebut sehingga berjaya sebelum memulakan ujian bebanan.**
-- **Fasa 8 (Ujian Automasi E2E - Playwright)**: Apabila fasa ini diarahkan, pasang dan konfigurasikan kerangka kerja Playwright di dalam projek frontend (contohnya Next.js) menggunakan TypeScript. Bina skrip ujian E2E yang menyimulasikan aliran pengguna sebenar secara automatik. Laksanakan ujian secara menyeluruh sehingga siap dan pastikan ia berfungsi tanpa sebarang ralat (regression test).
+- **Fasa 8 (Ujian Automasi E2E - Playwright)**: Apabila fasa ini diarahkan, pasang dan konfigurasikan kerangka kerja Playwright di dalam projek frontend menggunakan TypeScript. Playwright MESTI dijalankan dalam *development environment* sahaja secara **Local Biasa**, manakala sasaran (iaitu pelayan backend dan pangkalan data utama) **wajib berjalan** dari dalam persekitaran Docker. MESTI menggunakan **Ujian E2E Sebenar (Real Database)**. Sila periksa sama ada sistem menggunakan OTP dan pastikan **Kod Magik (Backdoor Ujian)** sudah dipasang di *backend* untuk persekitaran pembangunan. Jika belum, pasang ia sebelum ujian E2E bermula. **SEBELUM MELAKSANAKAN UJIAN, AI WAJIB menyemak dan menghidupkan pelayan frontend tempatan (cth: `npm run dev`) serta memastikan kontena Docker sasaran (pelayan backend & pangkalan data) telah pun hidup (running). Jika pelayan sasaran gagal dihidupkan, AI dilarang sama sekali menjalankan arahan ujian.** Akhir sekali, bina skrip ujian dan laksanakan ujian secara menyeluruh (**MAKSUD MENYELURUH: AI WAJIB memastikan 100% kesemua halaman, sub-halaman, dan ciri yang wujud di dalam sistem diuji tanpa ada satu pun yang tertinggal**) sehingga siap tanpa ralat (regression test). **PENTING: Selepas skrip siap dan pelayan disahkan beroperasi, AI WAJIB menjalankan ujian tersebut secara automatik di terminal (cth: `npm run test:e2e`) dan melaporkan keputusan Lulus/Gagal secara terperinci kepada pengguna.**
 
 ---
 
-## Mod Pelaksanaan "Tanpa-Soalan" (Autonomi Penuh)
-
-1. **Keputusan Autonomi**: Jika terdapat butiran teknikal yang tidak dinyatakan secara spesifik (penamaan kolum, library standard, struktur folder sekunder), buat keputusan berdasarkan amalan terbaik (best practices) industri tanpa perlu bertanya.
-2. **Kitaran Pembetulan Kendiri**: Jika terdapat sebarang ralat (error) semasa build, kompilasi, atau linting (termasuk unit test), anda mesti menganalisis dan membetulkan ralat tersebut secara automatik tanpa melaporkannya sebagai soalan.
-3. **Pengurusan Ciri Responsif (Spontan) & Kewajipan Ujian**: Jika pengguna meminta ciri baharu secara spontan yang tiada dalam rancangan asal `roadmap.md`:
-   - AI wajib membina unit/feature test bagi ciri baharu tersebut untuk mengelakkan sebarang kod terlepas pandang tanpa ujian.
-   - Kemas kini `roadmap.md` untuk memasukkan perancangan sistem ciri baharu.
-   - Kemas kini `features.md` untuk menyenaraikan ciri baharu berserta status ujiannya.
-   - Fail Security Audit (Laporan cth: `security_audit.md`) berdasarkan "30 Global Rules".
-4. **Integriti Database (Migrations & Automation)**:
-   - Jana skrip migrasi yang bersifat _idempotent_ (contoh: fail `.sql` untuk Rust/SQLx) untuk setiap perubahan DB.
-   - Sertakan kod makro Automatic Migration (seperti `sqlx::migrate!()`) di dalam main/startup supaya migrasi berjalan automatik.
-5. **Pembenihan Data Sensitif (Admin Seeding Check)**: Semasa startup/migration, masukkan logik Admin Seeding dengan prinsip `ON CONFLICT DO NOTHING` supaya struktur akaun Admin Induk kekal tanpa duplicate.
-6. **Integriti Status & features.md (Pengesahan Ujian)**: Fail `features.md` berfungsi sebagai senarai fitur lengkap yang mempunyai unit test (serta fitur spontan baharu). Setiap kali unit test dijalankan:
-   - AI wajib mengemas kini status kotak semak di `features.md` dengan menanda `[x]` (atau `✔️`) bagi fitur yang ujiannya lulus (berjalan lancar) dan memadam tanda / menukar kepada `[ ]` (atau `⬜`/`❌`) bagi fitur yang ujiannya gagal/rosak, supaya status kesihatan kod sentiasa tepat.
-   - Kemas kini `roadmap.md` dengan status ✅ apabila keseluruhan modul telah siap diimplementasikan dan tiada ralat.
-7. **Mod Halimunan Admin (Stealth)**: Setiap Endpoint/Route Admin rahsia mestilah mempunyai komponen Audit Logging dan Strict Rate Limiting secara automatik.
-8. **Penguatkuasaan Keselamatan Berkala**: Setiap kod yang dihasilkan WAJIB mematuhi 30 Peraturan Keselamatan Master secara ketat. Lakukan _self-audit_ terhadap 30 rules ini sebelum memulangkan jawapan kod.
-9. **Sistem Pengurusan Token (Panjang)**: Jika implementasi diramalkan melebihi had token respons AI, bahagikan jawapan kepada beberapa siri secara automatik (cth: "Sila taip 'Teruskan' untuk Bahagian 2").
-10. **Dokumentasi API**: Setiap endpoint API backend mestilah didokumentasikan mengikut standard format Swagger/OpenAPI secara automatik.
-11. **Protokol Penyelenggaraan Pantas & Selamat (Abu Hanifah Skills)**:
-    - **Auto-Restart**: Setiap kali kod backend atau frontend diubah, AI wajib melakukan _restart_ (cargo run/npm run dev) secara automatik tanpa perlu menunggu arahan pengguna.
-    - **Secure Debugging**: Jika ralat SQL didedahkan untuk tujuan penyahpepijatan (debug), AI wajib memadam/mengembalikan kod tersebut ke mod selamat (Generic Error) serta-merta selepas ralat selesai dikesan.
-    - **Wajib Unit Test**: Setiap ciri (feature) baru yang dibina wajib disertakan dengan fail Unit Test yang sah dan lulus ujian sebelum dianggap siap.
-    - **Piawaian Pembangunan (Hibrid)**: Sentiasa utamakan penggunaan `cargo run` dan `npm run dev` untuk kelajuan pembangunan, manakala Docker hanya digunakan untuk perkhidmatan infrastruktur (DB/Redis).
-
----
 
 ## Post-Mortem Protocol
 When a failure signal is detected (deployment failure, broken tests, wasted time, architecture reversal, security incident, data loss):

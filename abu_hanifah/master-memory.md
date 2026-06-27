@@ -19,6 +19,7 @@ _Pusat Kawalan Utama untuk Memori AI Anda_
 ### 3. Kemahiran & Ciri-Ciri (Skills & Features)
 
 - **[Manage Project Skill](file:///c:/Users/mypc/Desktop/Longterm%20Memory%20Project/abu_hanifah/skills/manage-project.md)**: Protokol pengurusan portfolio projek LRU (Had 10 projek aktif).
+- **[Autonomi Penuh Skill](file:///c:/Users/mypc/Desktop/Longterm%20Memory%20Project/abu_hanifah/skills/autonomi-penuh.md)**: Mod AI membuat keputusan teknikal & membetulkan ralat secara automatik tanpa bertanya.
 - **[Project List Portfolio](file:///c:/Users/mypc/Desktop/Longterm%20Memory%20Project/abu_hanifah/projects/project-list.md)**: Senarai dinamik projek aktif dan arkib.
 - **[Post-Mortem Skill](file:///c:/Users/mypc/Desktop/Longterm%20Memory%20Project/abu_hanifah/skills/post-mortem.md)**: Pengesan kegagalan automatik dan manual.
 - **[Detect Mockups Skill](file:///c:/Users/mypc/Desktop/Longterm%20Memory%20Project/abu_hanifah/skills/detect-mockups.md)**: Automasi imbasan AST dan kemas kini `roadmap.md` untuk mengesan UI olok-olok yang belum siap.

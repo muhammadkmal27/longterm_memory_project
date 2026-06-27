@@ -2,29 +2,63 @@
 
 *Fail ini menyimpan sejarah projek pengguna, pantang-larang (rules), dan spesifikasi teknikal.*
 
-## Pilihan Teknologi Teras (Core Stack)
-- **Frontend**: Next.js, TailwindCSS
-- **Backend**: Laravel (PHP) atau Rust (Axum)
-- **Bahasa Komunikasi**: Bahasa Malaysia (BM) untuk perbualan, Implementation Plan, `roadmap.md`, dan `features.md`.
-- **Bahasa Pengekodan**: English (EN) sepenuhnya untuk kod sumber, komen, dokumentasi API, serta semua data teknikal dalam SQL (seperti default values, trigger messages, dan seed data).
-- **Flutter Development**: Menggunakan `device_preview` secara lalai (default) untuk projek Flutter bagi menyokong pratonton peranti yang luas (termasuk Apple iOS dan Android) semasa pembangunan.
-- **Singkatan Khas**: `t` bermaksud "Teruskan" (Continue).
-- **Protokol Kemajuan**: SETIAP KALI fitur baharu siap diimplementasi (tanpa mengira fasa), Abu Hanifah WAJIB segera mengemaskini fail `features.md` (untuk senarai semak Unit Test) dengan nama fitur yang spesifik dan granular. Fail `roadmap.md` pula WAJIB dikemaskini dengan status ✅ sejurus selepas fasa disiapkan. Kegagalan mengemaskini `features.md` atau `roadmap.md` dianggap melanggar protokol memori utama.
-- **Protokol Pelaksanaan Berterusan (Continuous Execution Mode)**: Apabila pengguna memberi arahan pukal seperti "Siapkan Fasa 4", Abu Hanifah WAJIB menggunakan mod **/goal** dan melaksanakan kesemua Sub-Fasa di dalamnya secara berterusan dan berurutan dari mula hingga akhir (termasuk Sub-Fasa Mockup). JANGAN berhenti untuk meminta pengesahan kecil antara Sub-Fasa kecuali terdapat ralat kritikal yang memerlukan keputusan drastik daripada pengguna.
-- **Protokol Pembersihan Kod**: SETIAP KALI ralat atau isu teknikal telah diselesaikan dan disahkan oleh pengguna (Cth: "Alhamdulillah" atau "dah boleh"), bersihkan semua kod debugging (`console.log`, `console.error`) dengan segera untuk menjaga integriti kod produksi.
+## 🛠️ Undang-Undang Operasi & Pantang-Larang Teknikal (Core Operational Rules)
 
-## Protokol Deployment (Workflow)
-- **Deployment Method**: GitHub Actions (CI/CD) -> GHCR -> Docker Compose Pull.
-- **Git Protocol**: Hanya `git pull` untuk fail konfigurasi (`.yml`, `.conf`, `.env`). Dilarang `git pull` kod sumber (src) di server produksi.
-- **Pencegahan Disk Penuh (Server Disk Cleanup)**: Setiap kali proses deployment selesai dijalankan oleh GitHub Actions, sistem WAJIB menjalankan `docker system prune -f` dan `docker builder prune -f` secara automatik di server produksi untuk mengelakkan disk storan penuh yang boleh menyebabkan database terhenti atau lumpuh dalam recovery mode.
+1. **Pilihan Teknologi Teras (Core Stack)**
+   - **Frontend**: Next.js, TailwindCSS
+   - **Backend**: Laravel (PHP) atau Rust (Axum)
+   - **Bahasa Komunikasi**: Bahasa Malaysia (BM) untuk perbualan, Implementation Plan, `roadmap.md`, dan `features.md`.
+   - **Bahasa Pengekodan**: English (EN) sepenuhnya untuk kod sumber, komen, dokumentasi API, serta semua data teknikal dalam SQL (seperti default values, trigger messages, dan seed data).
+   - **Flutter Development**: Menggunakan `device_preview` secara lalai (default) untuk projek Flutter bagi menyokong pratonton peranti yang luas (termasuk Apple iOS dan Android) semasa pembangunan.
+   - **Singkatan Khas**: `t` bermaksud "Teruskan" (Continue).
+   - **Protokol Kemajuan**: SETIAP KALI fitur baharu siap diimplementasi (tanpa mengira fasa), Abu Hanifah WAJIB segera mengemaskini fail `features.md` (untuk senarai semak Unit Test) dengan nama fitur yang spesifik dan granular. Fail `roadmap.md` pula WAJIB dikemaskini dengan status ✅ sejurus selepas fasa disiapkan. Kegagalan mengemaskini `features.md` atau `roadmap.md` dianggap melanggar protokol memori utama.
+   - **Protokol Pelaksanaan Berterusan (Continuous Execution Mode)**: Apabila pengguna memberi arahan pukal seperti "Siapkan Fasa 4", Abu Hanifah WAJIB menggunakan mod **/goal** dan melaksanakan kesemua Sub-Fasa di dalamnya secara berterusan dan berurutan dari mula hingga akhir (termasuk Sub-Fasa Mockup). JANGAN berhenti untuk meminta pengesahan kecil antara Sub-Fasa kecuali terdapat ralat kritikal yang memerlukan keputusan drastik daripada pengguna.
+   - **Protokol Pembersihan Kod**: SETIAP KALI ralat atau isu teknikal telah diselesaikan dan disahkan oleh pengguna (Cth: "Alhamdulillah" atau "dah boleh"), bersihkan semua kod debugging (`console.log`, `console.error`) dengan segera untuk menjaga integriti kod produksi.
 
-## Piawaian Infrastruktur & Docker
-- **Data Persistence (Volume)**: Setiap pangkalan data (PostgreSQL, Redis, dsb.) di dalam Docker wajib menggunakan Docker Volume atau Bind Mount yang tersendiri bagi mengelakkan kehilangan data semasa proses rebuild atau deployment (CI/CD).
-- **Local Dev Environment Docker Dependency**: Setiap kali memulakan persekitaran pembangunan tempatan (local dev), Abu Hanifah WAJIB memeriksa dan memastikan perkhidmatan kontena (Docker Desktop) bagi semua pangkalan data (database), caching layer, dan middleware pihak ketiga yang diperlukan oleh projek tersebut telah dihidupkan terlebih dahulu sebelum menjalankan server aplikasi.
+2. **Protokol Deployment (Workflow)**
+   - **Deployment Method**: GitHub Actions (CI/CD) -> GHCR -> Docker Compose Pull.
+   - **Git Protocol**: Hanya `git pull` untuk fail konfigurasi (`.yml`, `.conf`, `.env`). Dilarang `git pull` kod sumber (src) di server produksi.
+   - **Pencegahan Disk Penuh (Server Disk Cleanup)**: Setiap kali proses deployment selesai dijalankan oleh GitHub Actions, sistem WAJIB menjalankan `docker system prune -f` dan `docker builder prune -f` secara automatik di server produksi untuk mengelakkan disk storan penuh yang boleh menyebabkan database terhenti atau lumpuh dalam recovery mode.
 
-## Prinsip Pengekodan UI (Mobile vs Desktop)
-- **Mobile-Specific Isolation**: Segala perubahan UI untuk versi mudah alih (mobile) MESTI diasingkan menggunakan responsive classes (contoh: `hidden lg:block`).
-- **Desktop Integrity**: DILARANG keras mengubah rupa atau fungsi versi Desktop/Laptop semasa membuat pelarasan untuk Mobile.
+3. **Piawaian Infrastruktur & Docker**
+   - **Data Persistence (Volume)**: Setiap pangkalan data (PostgreSQL, Redis, dsb.) di dalam Docker wajib menggunakan Docker Volume atau Bind Mount yang tersendiri bagi mengelakkan kehilangan data semasa proses rebuild atau deployment (CI/CD).
+   - **Local Dev Environment Docker Dependency**: Setiap kali memulakan persekitaran pembangunan tempatan (local dev), Abu Hanifah WAJIB memeriksa dan memastikan perkhidmatan kontena (Docker Desktop) bagi semua pangkalan data (database), caching layer, dan middleware pihak ketiga yang diperlukan oleh projek tersebut telah dihidupkan terlebih dahulu sebelum menjalankan server aplikasi.
+
+4. **Prinsip Pengekodan UI (Mobile vs Desktop)**
+   - **Mobile-Specific Isolation**: Segala perubahan UI untuk versi mudah halih (mobile) MESTI diasingkan menggunakan responsive classes (contoh: `hidden lg:block`).
+   - **Desktop Integrity**: DILARANG keras mengubah rupa atau fungsi versi Desktop/Laptop semasa membuat pelarasan untuk Mobile.
+
+5. **Peraturan Wajib Kod Magik (Backdoor Ujian)**: Mewajibkan pemakaian Kod Magik (`000000`) setiap kali membina fungsi OTP atau pengesahan 2FA di mana-mana laman web masa hadapan. Logik ini wajib dipasang secara lalai untuk memudahkan ujian automasi (hanya diaktifkan apabila `APP_ENV=development` atau seumpamanya).
+
+6. **Pengurusan Ciri Responsif (Spontan) & Kewajipan Ujian**: Jika pengguna meminta ciri baharu secara spontan yang tiada dalam rancangan asal `roadmap.md`:
+   - AI wajib membina unit/feature test bagi ciri baharu tersebut untuk mengelakkan sebarang kod terlepas pandang tanpa ujian.
+   - Kemas kini `roadmap.md` untuk memasukkan perancangan sistem ciri baharu.
+   - Kemas kini `features.md` untuk menyenaraikan ciri baharu berserta status ujiannya.
+   - Fail Security Audit (Laporan cth: `security_audit.md`) berdasarkan "33 Global Rules".
+
+7. **Integriti Database (Migrations & Automation)**:
+   - Jana skrip migrasi yang bersifat _idempotent_ (contoh: fail `.sql` untuk Rust/SQLx) untuk setiap perubahan DB.
+   - Sertakan kod makro Automatic Migration (seperti `sqlx::migrate!()`) di dalam main/startup supaya migrasi berjalan automatik.
+
+8. **Pembenihan Data Sensitif (Admin Seeding Check)**: Semasa startup/migration, masukkan logik Admin Seeding dengan prinsip `ON CONFLICT DO NOTHING` supaya struktur akaun Admin Induk kekal tanpa duplicate.
+
+9. **Integriti Status & features.md (Pengesahan Ujian)**: Fail `features.md` berfungsi sebagai senarai fitur lengkap yang mempunyai unit test (serta fitur spontan baharu). Setiap kali unit test dijalankan:
+   - AI wajib mengemas kini status kotak semak di `features.md` dengan menanda `[x]` (atau `✔️`) bagi fitur yang ujiannya lulus (berjalan lancar) dan memadam tanda / menukar kepada `[ ]` (atau `⬜`/`❌`) bagi fitur yang ujiannya gagal/rosak, supaya status kesihatan kod sentiasa tepat.
+   - Kemas kini `roadmap.md` dengan status ✅ apabila keseluruhan modul telah siap diimplementasikan dan tiada ralat.
+
+10. **Mod Halimunan Admin (Stealth)**: Setiap Endpoint/Route Admin rahsia mestilah mempunyai komponen Audit Logging dan Strict Rate Limiting secara automatik.
+
+11. **Penguatkuasaan Keselamatan Berkala**: Setiap kod yang dihasilkan WAJIB mematuhi 33 Peraturan Keselamatan Master secara ketat. Lakukan _self-audit_ terhadap 33 rules ini sebelum memulangkan jawapan kod.
+
+12. **Sistem Pengurusan Token (Panjang)**: Jika implementasi diramalkan melebihi had token respons AI, bahagikan jawapan kepada beberapa siri secara automatik (cth: "Sila taip 'Teruskan' untuk Bahagian 2").
+
+13. **Dokumentasi API**: Setiap endpoint API backend mestilah didokumentasikan mengikut standard format Swagger/OpenAPI secara automatik.
+
+14. **Protokol Penyelenggaraan Pantas & Selamat (Abu Hanifah Skills)**:
+    - **Auto-Restart**: Setiap kali kod backend atau frontend diubah, AI wajib melakukan _restart_ (cargo run/npm run dev) secara automatik tanpa perlu menunggu arahan pengguna.
+    - **Secure Debugging**: Jika ralat SQL didedahkan untuk tujuan penyahpepijatan (debug), AI wajib memadam/mengembalikan kod tersebut ke mod selamat (Generic Error) serta-merta selepas ralat selesai dikesan.
+    - **Wajib Unit Test**: Setiap ciri (feature) baru yang dibina wajib disertakan dengan fail Unit Test yang sah dan lulus ujian sebelum dianggap siap.
+    - **Piawaian Pembangunan (Hibrid)**: Sentiasa utamakan penggunaan `cargo run` dan `npm run dev` untuk kelajuan pembangunan, manakala Docker hanya digunakan untuk perkhidmatan infrastruktur (DB/Redis).
 
 ## Pantang-Larang & Standard Keselamatan (User Global Rules)
 *Sila aplikasikan peraturan ini pada setiap kod atau fungsi yang dijana:*

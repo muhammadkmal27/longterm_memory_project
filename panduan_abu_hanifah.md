@@ -269,6 +269,23 @@ Sistem terbina dalam untuk menghasilkan jadual anggaran kos projek berdasarkan t
 3.  Mendarabkan kuantiti ciri dengan Harga Unit mengikut versi _Quotation_ yang Tuan minta.
 4.  Menghasilkan jadual Markdown profesional yang memaparkan Kategori, Ciri-Ciri Utama, Kuantiti, Harga Unit, dan Jumlah berserta anggaran harga keseluruhan projek.
 
+
+
+---
+
+### 🚀 Modul 10: Mod Autonomi Penuh (Zero-Questions Mode)
+
+Kemahiran khas di mana Abu Hanifah dibenarkan untuk membuat keputusan secara autonomi tanpa meminta pendapat teknikal yang remeh dari Tuan.
+
+#### Arahan Penting (Cara Penggunaan):
+
+- `"Abu Hanifah, jalankan Autonomous Mode"` atau `buat keputusan sendiri` atau `bertindak secara autonomi` atau `tak perlu tanya, terus buat` — Arahkan Abu Hanifah untuk mengaktifkan mod ini.
+
+#### Cara Berfungsi:
+
+1. **Keputusan Autonomi**: AI secara automatik menggunakan amalan terbaik industri untuk menetapkan butiran teknikal (seperti penamaan pembolehubah, fail, atau pustaka/library) yang tidak disebut dalam skop asal tanpa menyoal kembali kepada Tuan.
+2. **Kitaran Pembetulan Kendiri**: Jika berlaku masalah kompilasi, linting, atau kegagalan Unit Test, AI akan menganalisis log ralat dan membetulkannya sendiri tanpa henti sehingga berjaya, sebelum memulangkan jawapan akhir.
+
 ---
 
 ## 4. 8 Fasa Pembangunan Sistem Abu Hanifah
