@@ -1,0 +1,7 @@
+# Ignore saved browser session & credentials
+threads_profile/
+__pycache__/
+*.pyc
+bot_activity.log
+posts_history.json
+

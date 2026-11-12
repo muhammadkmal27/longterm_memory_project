@@ -1,0 +1,19 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Temporary test screenshots
+debug_*.png
+step*.png
+*debug*.png
+*profile*.png
+
+# Browser automation profile & runtime history
+threads_profile/
+posts_history.json
+
+# OS artifacts
+.DS_Store
+Thumbs.db
