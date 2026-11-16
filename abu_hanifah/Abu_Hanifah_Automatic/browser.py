@@ -48,14 +48,8 @@ def open_persistent_context(p, headless: bool = False) -> BrowserContext:
 
 
 def interactive_login() -> bool:
-    """Open visible browser to allow the user to log in manually once with auto-detection."""
-    print("\n=======================================================")
-    print("      SESI LOG MASUK MANUAL THREADS (SEKALI SAHAJA)")
-    print("=======================================================")
-    print("1. Tetingkap Google Chrome dibuka sekarang.")
-    print("2. Sila log masuk ke akaun Threads / Instagram anda.")
-    print("3. Sistem akan mengesan status log masuk anda secara automatik.")
-    print("=======================================================\n")
+    """Open visible browser to allow manual login once with auto-detection."""
+    print("\n=== SESI LOG MASUK MANUAL THREADS ===\nBuka Chrome & log masuk akaun anda.\n")
 
     with sync_playwright() as p:
         context = open_persistent_context(p, headless=False)
@@ -133,7 +127,14 @@ def post_to_threads(post_text: str, image_paths: list = None, headless: bool = F
             page.set_default_timeout(PAGE_TIMEOUT_MS)
             
             print("[*] Membuka laman utama Threads...")
-            page.goto(THREADS_URL, wait_until="commit")
+            for attempt in range(3):
+                try:
+                    page.goto(THREADS_URL, wait_until="commit", timeout=PAGE_TIMEOUT_MS)
+                    break
+                except Exception as e:
+                    if attempt == 2:
+                        raise e
+                    time.sleep(3)
             try:
                 page.wait_for_selector("#barcelona-splash-screen", state="detached", timeout=15000)
             except Exception:
@@ -164,15 +165,27 @@ def post_to_threads(post_text: str, image_paths: list = None, headless: bool = F
             if not elem:
                 elem = page.locator('[aria-label="New thread"]').first
 
-            elem.click()
-            time.sleep(2)
-
-            # Locate the editable text box
             print("[*] Mengisi kandungan ayat promosi...")
-            textbox = page.wait_for_selector(
-                'div[role="textbox"][contenteditable="true"]', timeout=15000
-            )
-            textbox.click()
+            textbox = None
+            for _ in range(4):
+                try:
+                    elem.click(force=True)
+                except Exception:
+                    pass
+                try:
+                    textbox = page.wait_for_selector(
+                        'div[role="textbox"][contenteditable="true"]', timeout=3000
+                    )
+                    if textbox:
+                        break
+                except Exception:
+                    time.sleep(1)
+
+            if not textbox:
+                textbox = page.wait_for_selector(
+                    'div[role="textbox"][contenteditable="true"]', timeout=10000
+                )
+            textbox.click(force=True)
             time.sleep(1)
 
             # Type text smoothly to emulate human interaction
@@ -207,9 +220,20 @@ def post_to_threads(post_text: str, image_paths: list = None, headless: bool = F
             if not post_button:
                 post_button = page.locator('div[role="button"]:has-text("Post")').last
 
-            post_button.click(force=True)
+            post_button.click()
             print("[*] Menunggu hantaran selesai dimuat naik...")
-            time.sleep(8)
+            dialog_closed = False
+            for sec in range(15):
+                time.sleep(1)
+                if not dialog.is_visible() and sec >= 2:
+                    dialog_closed = True
+                    break
+
+            if not dialog_closed and dialog.is_visible():
+                raise Exception("Dialog pos gagal ditutup selepas butang ditekan.")
+
+            # Settle background GraphQL mutations
+            time.sleep(10)
 
             print("[+] Alhamdulillah! Post berjaya dihantar ke Threads.")
             logging.info("Successfully published new post to Threads.")

@@ -34,14 +34,21 @@ class TestGenerator(unittest.TestCase):
         for call in CLOSING_CALLS:
             self.assertIn(TARGET_URL, call)
 
+    from unittest.mock import patch
+
     def test_rotation_avoids_immediate_duplicates(self):
         """Verify that get_next_post avoids repeating used angles in the cycle."""
-        seen_indices = set()
-        for _ in range(len(TEMPLATES)):
-            idx, name, hook, content, images = get_next_post(variation=1)
-            seen_indices.add(idx)
-        # Should have touched multiple unique templates
-        self.assertGreater(len(seen_indices), 1)
+        mock_data = {
+            "active_variation": 1,
+            "next_queued_index": None,
+            "used_indices_in_cycle": [],
+            "history": [],
+        }
+        with unittest.mock.patch("generator.load_history_data", return_value=mock_data):
+            idx1, _, _, _, _ = get_next_post(variation=1)
+            mock_data["used_indices_in_cycle"].append(idx1)
+            idx2, _, _, _, _ = get_next_post(variation=1)
+            self.assertNotEqual(idx1, idx2)
 
     def test_variation_2_includes_images(self):
         """Verify that Variasi 2 attaches the 2 specific images."""

@@ -78,14 +78,18 @@ bijakenglish.imat.my
 5. **Pautan Sasaran:** `http://bijakenglish.imat.my/`
 
 ### 🔄 8 Pecahan Sudut Iklan yang Dijana Abu Hanifah Setiap Jam (Dengan 2 Gambar):
-1. **Formula Ceramah Menk Asal:** Cerita tentang tip viral dengar ceramah Mufti Menk + cadangan tulis perkataan (`menk_viral_tip_asli`).
-2. **Kuasa Menulis Word Baharu:** Fokus kepada psikologi kenapa menulis perkataan baru buat ia lekat dalam otak (`teknik_tulis_word_lekat`).
-3. **Ciri Terjemah Terus dari Subtitle:** Mengetengahkan kemudahan klik perkataan pada subtitle video untuk tengok maksud serta-merta (`interaktif_klik_subtitle`).
-4. **Cabaran Konsisten 2 Bulan:** Menyuntik semangat membina rutin harian 2 bulan untuk capai kefasihan bercakap (`cabaran_2_bulan_fluent`).
-5. **Dengar Bahasa Arab vs English Antarabangsa:** Kelebihan gaya bahasa Mufti Menk yang tenang, jelas, dan mudah dihadam pemula (`sebutan_jelas_mufti_menk`).
-6. **Belajar Sambil Dapat Pengisian Jiwa:** Gabungan mendengar tazkirah bermanfaat sambil mengasah penguasaan bahasa (`pengisian_rohani_sambil_belajar`).
-7. **Penerangan Visual Tangkap Layar:** Menjemput pengguna melihat 2 gambar yang dilampirkan untuk menyaksikan sendiri antara muka portal (`panduan_visual_gambar`).
-8. **Nilai RM50 Setahun untuk Transkrip Pintar:** Penegasan nilai pelaburan ilmu mampu milik bagi teknologi transkrip interaktif (`nilai_rahmah_transkrip_interaktif`).
+> **⚠️ Syarat Khas Variasi 2:** Ayat pertama (Hook) adalah **KEKAL (FIXED)** mengikut teks asal akhi:  
+> *"Haritu ada nampak ada satu threads ni kata kalau nak fluent english in 2months cuba konsisten setiap hari dengar ceramah mufti menk. Inshaa Allah boleh."*  
+> Hanya bahagian isi (core) dihuraikan dengan pelbagai variasi sudut berbeza setiap jam:
+
+1. **Tulis Word Versi Asal:** Nasihat tulis word baru biar lekat + tengok terjemahan terus (`tulis_word_versi_asal`).
+2. **Fokus Klik Terus Subtitle:** Kemudahan klik perkataan pada subtitle tanpa buka kamus lain (`fokus_klik_terus_subtitle`).
+3. **Transkrip Interaktif Lengkap:** Paparan pemain video khas bersama transkrip interaktif serentak (`transkrip_interaktif_lengkap`).
+4. **Rutin Harian Mudah:** Menanam disiplin tulis perkataan baru harian dengan panduan video (`rutin_harian_mudah`).
+5. **Dengar Sambil Catat Vocab:** Mengasah pendengaran ceramah sambil mencatat perbendaharaan kata baharu (`dengar_sambil_catat_vocab`).
+6. **Bina Kelancaran 2 Bulan:** Mengaitkan matlamat 2 bulan fasih dengan latihan aktif harian (`bina_kelancaran_2_bulan`).
+7. **Telinga & Minda Selari:** Latihan visual & auditori serentak disokong pop-up maksud (`telinga_minda_selari`).
+8. **Solusi Tak Perlu Kamus:** Kemudahan teknologi dwibahasa yang menjimatkan masa belajar (`solusi_tak_perlu_kamus`).
 
 ---
 

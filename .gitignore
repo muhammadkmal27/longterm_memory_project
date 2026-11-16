@@ -9,6 +9,11 @@ debug_*.png
 step*.png
 *debug*.png
 *profile*.png
+post_seq_*.png
+after_*.png
+check_*.png
+home_*.png
+scratch_*.png
 
 # Browser automation profile & runtime history
 threads_profile/

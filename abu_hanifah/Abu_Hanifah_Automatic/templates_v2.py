@@ -1,9 +1,13 @@
 """Templates for Variasi 2: Ceramah Mufti Menk + Tulis Word + Subtitle Interaktif.
 
-All templates are designed to be paired with:
+Opening sentence is FIXED as requested by user:
+'Haritu ada nampak ada satu threads ni kata kalau nak fluent english in 2months
+cuba konsisten setiap hari dengar ceramah mufti menk. Inshaa Allah boleh.'
+
+All templates are paired with 2 images:
 - variasi2a.png (Mobile mockup)
 - variasi2b.png (Desktop player)
-Length is strictly under 460 characters (Threads limit: 500 chars).
+Length is strictly under 475 characters (Threads limit: 500 chars).
 """
 
 from typing import Dict, List
@@ -15,74 +19,82 @@ VARIASI_2_IMAGES: List[str] = [
     str(Path(__file__).parent / "variasi2b.png"),
 ]
 
+FIXED_HOOK: str = (
+    "Haritu ada nampak ada satu threads ni kata kalau nak fluent english in 2months "
+    "cuba konsisten setiap hari dengar ceramah mufti menk. Inshaa Allah boleh."
+)
+
 TEMPLATES_V2: List[Dict[str, str]] = [
     {
-        "name": "menk_viral_tip_asli",
-        "hook": "Haritu ada nampak threads kata kalau nak fluent English in 2 months, konsisten dengar ceramah Mufti Menk.",
+        "name": "tulis_word_versi_asal",
+        "hook": FIXED_HOOK,
         "core": (
-            "Tips dari saya: tulis setiap word baru yang awak jumpa. Menulis tu buat perkataan lekat dalam otak!\n\n"
-            "Cuba pakai website saya. Dalam setiap video ada subtitle Malay & English, siap boleh klik tengok terjemahan perkataan terus dari subtitle (tengok gambar).\n\n"
-            "Harga murah je, RM50 setahun."
+            "Tips dari saya, awak kena tulis setiap word yang baru tahu. Menulis tu buat word lekat dalam otak!\n\n"
+            "Cuba pakai website saya, setiap video ada subtitle Malay & English. Siap boleh tengok terjemahan word "
+            "terus dari subtitle macam dalam gambar. RM50 setahun je."
         ),
     },
     {
-        "name": "teknik_tulis_word_lekat",
-        "hook": "Kenapa dengar ceramah Mufti Menk bagus tapi masih ramai susah nak ingat vocab?",
+        "name": "fokus_klik_terus_subtitle",
+        "hook": FIXED_HOOK,
         "core": (
-            "Sebab dengar saja tak cukup, kena tulis word baru tu biar lekat dalam otak!\n\n"
-            "Website kami sediakan video ceramah dengan 2 subtitle (Melayu & English). Paling best, boleh terus tengok maksud perkataan atas skrin macam dalam gambar.\n\n"
-            "Akses setahun penuh cuma RM50."
+            "Tapi tips saya, tulis word baru tu biar lekat kat minda.\n\n"
+            "Boleh praktis kat website saya. Tak payah susah buka kamus, klik je perkataan kat subtitle video tu "
+            "terus keluar maksud bahasa Melayu (rujuk gambar). Yuran cuma RM50 setahun penuh."
         ),
     },
     {
-        "name": "interaktif_klik_subtitle",
-        "hook": "Tengah tonton video English, tiba-tiba jumpa perkataan pelik tak tahu makna?",
+        "name": "transkrip_interaktif_lengkap",
+        "hook": FIXED_HOOK,
         "core": (
-            "Kat website saya, tak payah susah-susah buka kamus lain. Klik je perkataan pada subtitle tu, terus keluar terjemahan bahasa Melayu (rujuk gambar)!\n\n"
-            "Sangat sesuai sambil dengar ceramah Mufti Menk untuk mantapkan vocab. Yuran RM50 setahun."
+            "Tips penting: tulis setiap perkataan baru yang didengar.\n\n"
+            "Kat website saya, ada pemain video khas dengan transkrip interaktif & 2 subtitle serentak. "
+            "Boleh terus tekan perkataan untuk tahu maksud macam tangkap layar di bawah. RM50 setahun."
         ),
     },
     {
-        "name": "cabaran_2_bulan_fluent",
-        "hook": "Cabaran 2 bulan fasih English secara konsisten:",
+        "name": "rutin_harian_mudah",
+        "hook": FIXED_HOOK,
         "core": (
-            "1. Setiap hari dengar ceramah Mufti Menk.\n"
-            "2. Tulis setiap perkataan baru yang dipelajari.\n"
-            "3. Praktis guna website saya yang ada 2 subtitle serentak + maksud perkataan terus pada skrin (rujuk gambar).\n\n"
-            "Pelaburan ilmu bajet rahmah, cuma RM50 setahun."
+            "Kuncinya kena rajin tulis perkataan baru yang jumpa setiap hari biar lekat dalam memori.\n\n"
+            "Cuba praktis di website kami. Setiap video ada subtitle dwibahasa dan terjemahan kosa kata segera "
+            "(tengok gambar). Pelaburan ilmu cuma RM50 untuk setahun."
         ),
     },
     {
-        "name": "sebutan_jelas_mufti_menk",
-        "hook": "Antara cara paling best latih telinga faham English adalah dengar ceramah Mufti Menk.",
+        "name": "dengar_sambil_catat_vocab",
+        "hook": FIXED_HOOK,
         "core": (
-            "Sebutan beliau sangat jelas dan tenang. Bila digabungkan dengan teknik menulis vocab baru, memang cepat lekat.\n\n"
-            "Dalam website kami, semua video ada subtitle dwibahasa & terjemahan interaktif macam dalam tangkap layar ni. Akses cuma RM50/tahun."
+            "Sambil dengar ceramah, tips terbaik adalah catat vocab baru supaya tak cepat lupa.\n\n"
+            "Website saya bantu sediakan video dengan subtitle Malay + English & auto-terjemah perkataan "
+            "atas skrin macam gambar ni. Akses 365 hari baru RM50."
         ),
     },
     {
-        "name": "pengisian_rohani_sambil_belajar",
-        "hook": "Belajar English sambil dapat pengisian rohani dan tazkirah bermanfaat.",
+        "name": "bina_kelancaran_2_bulan",
+        "hook": FIXED_HOOK,
         "core": (
-            "Sambil dengar ceramah Mufti Menk, sambil tu latih vocab harian. Kuncinya: tulis perkataan yang baru dipelajari.\n\n"
-            "Website saya bantu dengan paparan video 2 subtitle (Malay & English) siap maksud word automatik (tengok gambar). RM50 je setahun."
+            "Untuk hasil padu dalam 2 bulan, tulis word baru yang dipelajari setiap hari.\n\n"
+            "Dalam website saya, pengguna boleh dengar sambil rujuk video 2 subtitle dan klik maksud "
+            "perkataan terus (tengok gambar). Yuran bajet rahmah RM50 setahun."
         ),
     },
     {
-        "name": "panduan_visual_gambar",
-        "hook": "Cuba tengok 2 gambar di bawah ni. Macam ni rupa cara kami latih vocabulary:",
+        "name": "telinga_minda_selari",
+        "hook": FIXED_HOOK,
         "core": (
-            "Video ceramah (macam Mufti Menk) dipaparkan bersama subtitle dwibahasa. Bila jumpa perkataan asing, maksudnya terus muncul tanpa pening kepala.\n\n"
-            "Tulis dan faham perkataan baru setiap hari. Yuran cuma RM50 untuk 365 hari akses."
+            "Dengar ceramah memang mantap, tapi lagi cepat lekat kalau kita tulis perkataan baru tu.\n\n"
+            "Guna website saya untuk tonton video ber-subtitle dwibahasa. Siap ada pop-up maksud "
+            "perkataan bila klik (rujuk gambar). Murah je, RM50 setahun."
         ),
     },
     {
-        "name": "nilai_rahmah_transkrip_interaktif",
-        "hook": "Ramai nak praktis English dengar ceramah Mufti Menk tapi tersekat sebab vocab terhad.",
+        "name": "solusi_tak_perlu_kamus",
+        "hook": FIXED_HOOK,
         "core": (
-            "Sebab tu dalam website saya, kami sediakan transkrip interaktif dengan terjemahan maksud perkataan terus dari video (macam gambar dilampirkan).\n\n"
-            "Tulis word baru, hafal dan faham. Akses setahun baru RM50."
+            "Nasihat saya, jangan lupa tulis setiap perkataan baru yang dipelajari biar kemas dalam otak.\n\n"
+            "Website kami mudahkan proses ni: ada subtitle dwi-bahasa dan maksud perkataan terpapar "
+            "terus bila ditekan (seperti dalam gambar). RM50 setahun."
         ),
     },
 ]
-
